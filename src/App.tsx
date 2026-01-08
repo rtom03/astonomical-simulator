@@ -1,19 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Play, Pause, Zap, Wind, Turtle } from "lucide-react";
 
 const App = () => {
-  const canvasRef = useRef(null);
+  const canvasRef: any = useRef(null);
   const [isPaused, setIsPaused] = useState(false);
   const [speed, setSpeed] = useState(1);
   const [showOrbits, setShowOrbits] = useState(true);
   const [showLabels, setShowLabels] = useState(true);
-  const [trailLength, setTrailLength] = useState(50);
-  const animationRef = useRef(null);
-  const timeRef = useRef(0);
-  const trailsRef = useRef({ moon: [], earth: [], sun: [] });
+  const [trailLength, setTrailLength] = useState(0);
+  const animationRef: any = useRef(null);
+  const timeRef: any = useRef(0);
+  const trailsRef: any = useRef({ moon: [], earth: [], sun: [] });
 
   useEffect(() => {
-    const canvas = canvasRef.current;
+    const canvas: any = canvasRef.current;
     const ctx = canvas.getContext("2d");
 
     const resize = () => {
@@ -23,7 +23,14 @@ const App = () => {
     resize();
     window.addEventListener("resize", resize);
 
-    const drawGlow = (ctx, x, y, radius, color, intensity = 1) => {
+    const drawGlow = (
+      ctx: any,
+      x: any,
+      y: any,
+      radius: any,
+      color: any,
+      intensity = 1
+    ) => {
       const gradient = ctx.createRadialGradient(x, y, 0, x, y, radius * 2.5);
       gradient.addColorStop(0, color);
       gradient.addColorStop(0.4, color.replace("1)", `${0.4 * intensity})`));
@@ -32,7 +39,7 @@ const App = () => {
       ctx.fillRect(x - radius * 2.5, y - radius * 2.5, radius * 5, radius * 5);
     };
 
-    const drawTrail = (trail, color) => {
+    const drawTrail = (trail: any, color: any) => {
       if (trail.length < 2) return;
 
       ctx.strokeStyle = color;
@@ -313,7 +320,7 @@ const App = () => {
       {/* Control Panel */}
       <div className="absolute top-4 left-4 z-10 bg-gray-900 bg-opacity-90 p-4 rounded-xl text-white shadow-2xl backdrop-blur-sm border border-gray-700">
         <h1 className="text-2xl font-bold mb-2 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
-          Cosmic Orbital System
+          Earth Cosmic Orbital System
         </h1>
         <p className="text-sm mb-4 text-gray-300">
           Moon → Earth → Sun → Galactic Center
@@ -397,7 +404,6 @@ const App = () => {
         Current Speed:{" "}
         <span className="font-bold text-yellow-400">{speed}x</span>
       </div>
-
       <canvas ref={canvasRef} className="w-full h-full" />
     </div>
   );
