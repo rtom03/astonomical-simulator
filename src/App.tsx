@@ -318,7 +318,7 @@ const App = () => {
   return (
     <div className="w-full h-screen bg-black flex flex-col justify-center relative overflow-hidden">
       {/* Control Panel */}
-      <div className="absolute top-4 left-4 z-10 bg-gray-900 bg-opacity-90 p-4 rounded-xl text-white shadow-2xl backdrop-blur-sm border border-gray-700">
+      <div className="hidden md:block absolute top-4 left-4 z-10 bg-gray-900 bg-opacity-90 p-4 rounded-xl text-white shadow-2xl backdrop-blur-sm border border-gray-700">
         <h1 className="text-2xl font-bold mb-2 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
           Earth Cosmic Orbital System
         </h1>
